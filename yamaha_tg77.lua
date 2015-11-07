@@ -1260,8 +1260,8 @@ end
 
 -- }}}
 return SynthDefinition {
-    id = "yamaha_tg77_full",
-    name = "Yamaha TG77 FULL",
+    id = "yamaha_tg77",
+    name = "Yamaha TG77",
     author = "oshiosalt [https://github.com/oshiosalt]",
     beta = true,
     content_height = 800,
