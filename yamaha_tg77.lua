@@ -1,5 +1,5 @@
 -- utility functions {{{
-function numToBits(num)
+local function numToBits(num)
     -- number => string
     local bits = {}
     while num > 0 do
@@ -9,7 +9,7 @@ function numToBits(num)
     return table.concat(bits):reverse()
 end
 
-function increaseToNbits(bits, N)
+local function increaseToNbits(bits, N)
     -- string, number => string 
     -- ex: increaseToNbits("010", 8) => "00000010"
     if bits:len() < N then
@@ -18,7 +18,7 @@ function increaseToNbits(bits, N)
     return bits
 end
 
-function bitsToNum(bits_str)
+local function bitsToNum(bits_str)
     local reversed_bits = {}
     -- gsub for str to table
     bits_str:reverse():gsub(".", function(ch) table.insert(reversed_bits, ch) end)
@@ -33,7 +33,7 @@ function bitsToNum(bits_str)
     return num
 end
 
-function concatArrays(...)
+local function concatArrays(...)
     -- { tbl1, tbl2, ... } => { merged_array }
     local args = {...}
     local new_arr = {}
@@ -487,7 +487,6 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
             name = "AFM Element" .. el_index .. " OP".. op_index,
             sysex_message_template = {0xf0, 0x43, 0x10, 0x34, operator, element, 0x00, "nn", 0x00, "vv", 0xf7},
                 Parameter {
-                    -- ISSUE: generize?
                     id = afm_element_id_top .. "oscilator_input0_source",
                     name = "Osc input0 Source",
                     number = 0x13,
@@ -570,10 +569,10 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local output_dest = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"].value
+                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"].value()
                             ), 2)
                         local accum_input0 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"].value
+                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"].value()
                             ), 2)
                         local accum_input1 = increaseToNbits( numToBits(parameter.value), 1)
 
