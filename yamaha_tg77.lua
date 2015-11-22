@@ -149,8 +149,8 @@ for index, element_value in ipairs(ELEMENT_VALUES) do
 
                 value_callback = function (parameter)
                     -- CAUTION
-                    if parameter.value() <= 44 then
-                        return parameter.value()
+                    if parameter:value() <= 44 then
+                        return parameter:value()
                     else
                         return 0xff     -- free algorithm
                     end
@@ -446,7 +446,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     default_value = 63,
                     value_callback = function (parameter)
                         --  reversed value ex: 63 => 0, 0 => 63
-                        return parameter.max_value - parameter.value()
+                        return parameter.max_value - parameter:value()
                     end
                 },
                 Parameter {
@@ -494,9 +494,9 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input1 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_input1_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_input1_source"]:value()
                             ), 4)
-                        local input0 = increaseToNbits( numToBits(parameter.value()), 4 )
+                        local input0 = increaseToNbits( numToBits(parameter:value()), 4 )
 
                         return bitsToNum( input1 .. input0 )
                     end
@@ -511,9 +511,9 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input0 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_input0_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_input0_source"]:value()
                             ), 4)
-                        local input1 = increaseToNbits( numToBits(parameter.value()), 4 )
+                        local input1 = increaseToNbits( numToBits(parameter:value()), 4 )
 
                         return bitsToNum( input1 .. input0 )
                     end
@@ -528,12 +528,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local accum_input0 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"]:value()
                             ), 2)
                         local accum_input1 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"]:value()
                             ), 2)
-                        local output_dest = increaseToNbits( numToBits(parameter.value()), 1)
+                        local output_dest = increaseToNbits( numToBits(parameter:value()), 1)
 
                         return bitsToNum( accum_input1 .. accum_input0 .. output_dest )
                     end
@@ -548,12 +548,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local output_dest = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"]:value()
                             ), 2)
                         local accum_input1 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input1_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input1_source"]:value()
                             ), 1)
-                        local accum_input0 = increaseToNbits( numToBits(parameter.value()), 2)
+                        local accum_input0 = increaseToNbits( numToBits(parameter:value()), 2)
 
                         return bitsToNum( accum_input1 .. accum_input0 .. output_dest )
                     end
@@ -568,12 +568,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local output_dest = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_output_destination"]:value()
                             ), 2)
                         local accum_input0 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"].value()
+                            synthdef.parameters[afm_element_id_top .. "out_accumulator_input0_source"]:value()
                             ), 2)
-                        local accum_input1 = increaseToNbits( numToBits(parameter.value()), 1)
+                        local accum_input1 = increaseToNbits( numToBits(parameter:value()), 1)
 
                         return bitsToNum( accum_input1 .. accum_input0 .. output_dest )
                     end
@@ -587,9 +587,9 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input1 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_input1_shift_value"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_input1_shift_value"]:value()
                             ), 3)
-                        local input0 = increaseToNbits( numToBits(parameter.value()), 3)
+                        local input0 = increaseToNbits( numToBits(parameter:value()), 3)
 
                         return bitsToNum( input0 .. input1 )
                     end
@@ -603,9 +603,9 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input0 = increaseToNbits(numToBits(
-                            synthdef.parameters[afm_element_id_top .. "oscilator_input0_shift_value"].value()
+                            synthdef.parameters[afm_element_id_top .. "oscilator_input0_shift_value"]:value()
                             ), 3)
-                        local input1 = increaseToNbits( numToBits(parameter.value()), 3)
+                        local input1 = increaseToNbits( numToBits(parameter:value()), 3)
 
                         return bitsToNum( input0 .. input1 )
                     end
@@ -634,12 +634,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local pitch_eg_switch = numToBits(
-                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"].value()
+                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"]:value()
                             )
                         local freq_mode = numToBits(
-                            synthdef.parameters[afm_element_id_top .. "frequency_mode"].value()
+                            synthdef.parameters[afm_element_id_top .. "frequency_mode"]:value()
                             )
-                        local m_lfo_pitch_mod_sens = increaseToNbits( numToBits(parameter.value()), 3)
+                        local m_lfo_pitch_mod_sens = increaseToNbits( numToBits(parameter:value()), 3)
 
                         return bitsToNum( m_lfo_pitch_mod_sens .. pitch_eg_switch .. freq_mode )
                     end
@@ -652,12 +652,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local m_lfo_pitch_mod_sens = increaseToNbits( numToBits(
-                        synthdef.parameters[afm_element_id_top .. "m_lfo_pitch_modulation_sensitivity"].value()
+                        synthdef.parameters[afm_element_id_top .. "m_lfo_pitch_modulation_sensitivity"]:value()
                             ), 3)
                         local pitch_eg_switch = numToBits(
-                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"].value()
+                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"]:value()
                             )
-                        local freq_mode = numToBits(parameter.value())
+                        local freq_mode = numToBits(parameter:value())
 
                         return bitsToNum( m_lfo_pitch_mod_sens .. pitch_eg_switch .. freq_mode )
                     end
@@ -672,12 +672,12 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local m_lfo_pitch_mod_sens = increaseToNbits( numToBits(
-                        synthdef.parameters[afm_element_id_top .. "m_lfo_pitch_modulation_sensitivity"].value()
+                        synthdef.parameters[afm_element_id_top .. "m_lfo_pitch_modulation_sensitivity"]:value()
                             ), 3)
                         local pitch_eg_switch = numToBits(
-                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"].value()
+                            synthdef.parameters[afm_element_id_top .. "pitch_eg_switch"]:value()
                             )
-                        local freq_mode = numToBits(parameter.value())
+                        local freq_mode = numToBits(parameter:value())
 
                         return bitsToNum( m_lfo_pitch_mod_sens .. pitch_eg_switch .. freq_mode )
                     end
@@ -691,8 +691,8 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local init_phase = increaseToNbits( numToBits( synthdef.parameters[
-                            afm_element_id_top .. "initial_phase_of_oscilator"].value() ), 7)
-                        local  is_enable = numToBits(parameter.value())
+                            afm_element_id_top .. "initial_phase_of_oscilator"]:value() ), 7)
+                        local  is_enable = numToBits(parameter:value())
 
                         return bitsToNum( is_enable .. init_phase )
                     end
@@ -705,9 +705,9 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local is_enable = numToBits(
-                            synthdef.parameters[afm_element_id_top .. "initial_phase_set_enable"].value()
+                            synthdef.parameters[afm_element_id_top .. "initial_phase_set_enable"]:value()
                             )
-                        local init_phase = increaseToNbits( numToBits(parameter.value()), 7 )
+                        local init_phase = increaseToNbits( numToBits(parameter:value()), 7 )
 
                         return bitsToNum( is_enable .. init_phase )
                     end
@@ -956,7 +956,7 @@ for index, element in ipairs(ELEMENT_VALUES) do
                     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07},
             default_value = 8,
             value_callback = function (parameter)
-                if parameter.value() >= 128 then
+                if parameter:value() >= 128 then
                     parameter.sysex_message_template = {
                         0xf0, 0x43, 0x10, 0x34, 0x07, element, 0x00, "nn", "vv", 0xf7
                     }
