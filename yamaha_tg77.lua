@@ -833,7 +833,7 @@ for index, element in ipairs(ELEMENT_VALUES) do
         },
         Parameter {
             sysex_message_template = {0xf0, 0x43, 0x10, 0x34, 0x07, element,
-                0x00, "nn", "vv", 0xf7},
+                0x00, "nn", 0x00, "vv", 0xf7},
             id = awm_element_id_top .. "waveform",
             name = "Waveform",
             number = 0x01,
