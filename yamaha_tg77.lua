@@ -347,7 +347,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
         afm_element_eg_keys[index] = Group {
             name = "AFM Element" .. el_index .. " OP".. op_index .. " EG Key",
             sysex_message_template = {0xf0, 0x43, 0x10, 0x34, operator, element, 0x00, "nn", 0x00, "vv", 0xf7},
-            Parameter {
+                Parameter {
                     id = afm_element_id_top .. "eg_key_on_rate_1",
                     name = "KEY_ON Rate 1",
                     number = 0x00,
