@@ -49,6 +49,12 @@ end
 local OPERATOR_VALUES = {0x56, 0x46, 0x36, 0x26, 0x16, 0x06}
 local ELEMENT_VALUES = {0x00, 0x20, 0x40, 0x60}
 --}}}
+-- general callbacks{{{
+local function reverse (parameter)
+        --  reversed value ex: 63 => 0, 0 => 63
+    return parameter.max_value - parameter:value()
+end
+-- }}}
 -- Groups
 -- Voice Data Common {{{
 local voice_data_common_id_top = "voice_data_common_"
@@ -444,10 +450,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     min_value = 0,
                     max_value = 63,
                     default_value = 63,
-                    value_callback = function (parameter)
-                        --  reversed value ex: 63 => 0, 0 => 63
-                        return parameter.max_value - parameter:value()
-                    end
+                    value_callback = reverse
                 },
                 Parameter {
                     id = afm_element_id_top .. "eg_rate_scaling",
@@ -824,7 +827,7 @@ for index, element in ipairs(ELEMENT_VALUES) do
 
         Parameter {
             id = awm_element_id_top .. "wavesource",
-            name = "wavesource",
+            name = "Wavesource",
             number = 0x00,
             max_value = 2,
         },
@@ -834,7 +837,7 @@ for index, element in ipairs(ELEMENT_VALUES) do
             id = awm_element_id_top .. "waveform",
             name = "Waveform",
             number = 0x01,
-            max_value = 256, 
+            max_value = 256
         },
         Parameter {
             id = awm_element_id_top .. "frequency_mode",
@@ -1051,7 +1054,9 @@ for index, element in ipairs(ELEMENT_VALUES) do
             name = "KEY_ON Rate 3 Sus",
             number = 0x52,
             min_value = 0,
-            max_value = 63
+            max_value = 63,
+            default_value = 63,
+            value_callback = reverse
         }, 
         Parameter {
             id = awm_element_id_top .. "amplitude_eg_key_on_rate_4",
@@ -1065,7 +1070,8 @@ for index, element in ipairs(ELEMENT_VALUES) do
             name = "KEY_OFF Rate 1 Rel",
             number = 0x54,
             min_value = 0,
-            max_value = 63
+            max_value = 63,
+            value_callback = reverse
         }, 
         Parameter {
             id = awm_element_id_top .. "amplitude_eg_key_on_level_2",
