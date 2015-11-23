@@ -71,6 +71,7 @@ local AWM_WAVEFORMS = {
     "Fretless",
     "WoodBass",
     "Shamisen",
+    "Koto",
     "Violin",
     "Pizz",
     "Strings",
