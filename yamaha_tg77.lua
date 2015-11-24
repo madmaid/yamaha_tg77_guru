@@ -466,14 +466,17 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     name = "KEY_ON Rate 1",
                     number = 0x00,
                     min_value = 0,
-                    max_value = 63
+                    max_value = 63,
+                    value_callback = reverse
                 }, 
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_rate_2",
                     name = "KEY_ON Rate 2",
                     number = 0x01,
                     min_value = 0,
-                    max_value = 63
+                    max_value = 63,
+                    default_value = 63,
+                    value_callback = reverse
                 }, 
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_rate_3",
@@ -494,14 +497,16 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     name = "KEY_OFF Rate 1",
                     number = 0x04,
                     min_value = 0,
-                    max_value = 63
+                    max_value = 63,
+                    value_callback = reverse
                 },
                 Parameter {
                     id = afm_element_id_top .. "eg_key_off_rate_2",
                     name = "KEY_OFF Rate 2",
                     number = 0x05,
                     min_value = 0,
-                    max_value = 63
+                    max_value = 63,
+                    value_callback = reverse
                 },
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_level_0",
@@ -509,6 +514,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x0e,
                     min_value = 0,
                     max_value = 63,
+                    default_value = 63,
                 },
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_level_1",
@@ -516,6 +522,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x06,
                     min_value = 0,
                     max_value = 63,
+                    value_callback = reverse
                 },
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_level_2",
@@ -523,6 +530,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x07,
                     min_value = 0,
                     max_value = 63,
+                    value_callback = reverse
                 }, 
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_level_3",
@@ -530,12 +538,15 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x08,
                     min_value = 0,
                     max_value = 63,
+                    value_callback = reverse
                 }, 
                 Parameter {
                     id = afm_element_id_top .. "eg_key_on_level_4",
                     name = "KEY_ON Level 4",
-                    number = 0x09, min_value = 0,
+                    number = 0x09,
+                    min_value = 0,
                     max_value = 63,
+                    value_callback = reverse
                 }, 
                 Parameter {
                     id = afm_element_id_top .. "eg_key_off_level_1",
