@@ -48,6 +48,7 @@ end
 -- CONSTANTS {{{
 local OPERATOR_VALUES = {0x56, 0x46, 0x36, 0x26, 0x16, 0x06}
 local ELEMENT_VALUES = {0x00, 0x20, 0x40, 0x60}
+local NORMAL_VOICE_ELEMENT_VALUES = {0x00, 0x10, 0x20, 0x30}
 local AWM_WAVEFORMS = {
     "Piano",
     "Trumpet",
@@ -193,12 +194,12 @@ local voice_data_common = Group {
 -- }}}
 -- Normal Voice Element {{{
 local normal_voice_elements = {}
-for index, element in ipairs(ELEMENT_VALUES) do
+for index, element in ipairs(NORMAL_VOICE_ELEMENT_VALUES) do
     local normal_voice_element_id_top = "normal_voice_element" .. index .. "_"
     normal_voice_elements[index] = Group {
         name = "Normal Voice Element" .. index,
         sysex_message_template = {
-            0xf0, 0x43, 0x10, 0x34, 0x03, element, 0x00, "nn", "vv", 0xf7
+            0xf0, 0x43, 0x10, 0x34, 0x03, element, 0x00, "nn", 0x00, "vv", 0xf7
         },
         Parameter {
             id = normal_voice_element_id_top .. "level",
@@ -712,6 +713,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x15,
                     min_value = 0,
                     max_value = 7,
+                    default_value = 7,
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input1 = increaseToNbits(numToBits(
@@ -728,6 +730,7 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x15,
                     min_value = 0,
                     max_value = 7,
+                    default_value = 7,
                     value_callback = function (parameter)
                         local synthdef = parameter.synth_definition
                         local input0 = increaseToNbits(numToBits(
