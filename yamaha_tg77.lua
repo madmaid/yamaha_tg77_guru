@@ -215,7 +215,6 @@ for index, element in ipairs(NORMAL_VOICE_ELEMENT_VALUES) do
       item_values = {0x87, 0x86, 0x85, 0x84, 0x83, 0x82, 0x81,
         0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07},
       default_value = 8,
-  -- sign magnitude
         },
         Parameter {
             id = normal_voice_element_id_top .. "note_shift",
