@@ -205,7 +205,8 @@ for index, element in ipairs(NORMAL_VOICE_ELEMENT_VALUES) do
         Parameter {
             id = normal_voice_element_id_top .. "level",
             name = "Level",
-            number = 0x00
+            number = 0x00,
+            default_value = 127
         },
         Parameter {
             id = normal_voice_element_id_top .. "detune",
