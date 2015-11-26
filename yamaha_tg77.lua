@@ -169,6 +169,7 @@ local function reverse (parameter)
         --  reversed value ex: 63 => 0, 0 => 63
     return parameter.max_value - parameter:value()
 end
+
 -- }}}
 -- Groups
 -- Voice Data Common {{{
@@ -917,7 +918,16 @@ for el_index, element in ipairs(ELEMENT_VALUES) do
                     number = 0x23,
                     min_value = 0,
                     max_value = 256,
-                    default_value = 128
+                    default_value = 128,
+                    display_min_value = -127,
+                    display_max_value = 128,
+                    value_callback = function (parameter)
+                        if parameter:value() > 127 then
+                            parameter.sysex_message_template = {
+                                0xf0, 0x43, 0x10, 0x34, operator, element, 0x00, "nn", "vv", 0xf7
+                            }
+                        end
+                    end
                 },
                 Parameter {
                     id = afm_element_id_top .. "rate_velocity_switch",
@@ -1165,7 +1175,6 @@ for index, element in ipairs(ELEMENT_VALUES) do
         name = "AWM Element " .. index .. " Amp EG",
         sysex_message_template = {0xf0, 0x43, 0x10, 0x34, 0x07, element, 0x00, "nn", 0x00, "vv", 0xf7},
         -- Amp EG
-        -- TODO: make name better
         Parameter {
             id = awm_element_id_top .. "amplitude_eg_eg_mode",
             name = "Mode",
